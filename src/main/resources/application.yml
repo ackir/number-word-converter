@@ -1,0 +1,10 @@
+info:
+  build:
+    name: @project.name@
+    description: @project.description@
+    group: @project.groupId@
+    artifact: @project.artifactId@
+    version: @project.version@
+
+server:
+  port: 5959
