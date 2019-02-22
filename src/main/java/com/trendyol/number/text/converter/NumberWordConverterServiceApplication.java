@@ -9,5 +9,4 @@ public class NumberWordConverterServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(NumberWordConverterServiceApplication.class, args);
     }
-
 }
