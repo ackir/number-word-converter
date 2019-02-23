@@ -7,7 +7,6 @@ public class GenericConstants {
     public static final String ONE_THOUSAND_THREE_HUNDRED_FORTY_FIVE = "one thousand three hundred forty five";
     public static final String ONE_HUNDRED_TWENTY_EIGHT = "one hundred twenty eight";
     public static final String NINETY_NINE = "ninety nine";
-    public static final String DOLLARS_TEXT = "dollars";
 
     private GenericConstants() {
         throw new IllegalAccessError("Can not access GenericConstants");
