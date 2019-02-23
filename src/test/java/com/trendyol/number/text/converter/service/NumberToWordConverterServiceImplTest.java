@@ -1,9 +1,12 @@
 package com.trendyol.number.text.converter.service;
 
 
+import com.trendyol.number.text.converter.enums.CurrencyEnum;
 import com.trendyol.number.text.converter.service.impl.NumberToWordConverterServiceImpl;
+import com.trendyol.number.text.converter.util.GenericConverter;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static com.trendyol.number.text.converter.constant.GenericConstants.*;
@@ -12,34 +15,38 @@ import static org.junit.Assert.assertEquals;
 
 public class NumberToWordConverterServiceImplTest {
 
+    @Mock
+    private GenericConverter genericConverter;
+
     private NumberToWordConverterServiceImpl numberToTextConverterService;
 
     @Before
     public void init() {
         MockitoAnnotations.initMocks(this);
-        numberToTextConverterService = new NumberToWordConverterServiceImpl();
+        genericConverter = new GenericConverter();
+        numberToTextConverterService = new NumberToWordConverterServiceImpl(genericConverter);
     }
 
     @Test
-    public void it_should_convert_hundred_number_to_text() {
+    public void itShouldConvertHundredNumberToWord() {
         // when
-        String text = numberToTextConverterService.numberToWords(123L);
+        String text = numberToTextConverterService.numberToWords(123L, CurrencyEnum.DOLLAR);
 
         //then
-        assertEquals(ONE_HUNDRED_TWENTY_THREE, text);
+        assertEquals(RESPONSE_ONE_HUNDRED_TWENTY_THREE, text);
     }
 
     @Test
-    public void it_should_convert_thousand_number_to_text() {
+    public void itShouldConvertBillionNumberToWord() {
         // when
-        String text = numberToTextConverterService.numberToWords(100850543457L);
+        String text = numberToTextConverterService.numberToWords(100850543457L, CurrencyEnum.DOLLAR);
 
         //then
-        assertEquals(ONE_HUNDRED_BILLION_EIGHT_HUNDRED_FIFTY_MILLION_FIVE_HUNDRED_FORTY_THREE_THOUSAND_FOUR_HUNDRED_FIFTY_SEVEN, text);
+        assertEquals(RESPONSE_ONE_HUNDRED_BILLION_EIGHT_HUNDRED_FIFTY_MILLION_FIVE_HUNDRED_FORTY_THREE_THOUSAND_FOUR_HUNDRED_FIFTY_SEVEN, text);
     }
 
     @Test
-    public void it_should_convert_text_included_to_thousand_number() {
+    public void itShouldConvertWordToThousandNumber() {
         //when
         long convertedNumber = numberToTextConverterService.wordsToNumber(ONE_THOUSAND_THREE_HUNDRED_FORTY_FIVE);
 
@@ -48,7 +55,7 @@ public class NumberToWordConverterServiceImplTest {
     }
 
     @Test
-    public void it_should_convert_text_included_to_hundred_number() {
+    public void itShouldConvertWordToHundredNumber() {
         //when
         long convertedNumber = numberToTextConverterService.wordsToNumber(ONE_HUNDRED_TWENTY_EIGHT);
 
@@ -57,7 +64,7 @@ public class NumberToWordConverterServiceImplTest {
     }
 
     @Test
-    public void it_should_convert_text_to_hundred_number() {
+    public void itShouldConvertWordToLessThanHundredNumber() {
         //when
         long convertedNumber = numberToTextConverterService.wordsToNumber(NINETY_NINE);
 

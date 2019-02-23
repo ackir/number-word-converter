@@ -1,5 +1,6 @@
 package com.trendyol.number.text.converter.controller;
 
+import com.trendyol.number.text.converter.enums.CurrencyEnum;
 import com.trendyol.number.text.converter.service.NumberToWordConverterService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,8 +18,9 @@ public class NumberToWordController {
     private final NumberToWordConverterService numberToWordConverterService;
 
     @GetMapping(path = "/number")
-    public String getConvertedNumberWords(@RequestParam Long requestNumber) {
-        return numberToWordConverterService.numberToWords(requestNumber);
+    public String getConvertedNumberWords(@RequestParam Long requestNumber,
+                                          @RequestParam(value = "currency", defaultValue = "DOLLAR") CurrencyEnum currency) {
+        return numberToWordConverterService.numberToWords(requestNumber, currency);
     }
 
     @GetMapping(path = "/word")
