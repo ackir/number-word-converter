@@ -2,6 +2,7 @@ package com.trendyol.number.text.converter.service;
 
 
 import com.trendyol.number.text.converter.enums.CurrencyEnum;
+import com.trendyol.number.text.converter.enums.number.NumberToWordEnum;
 import com.trendyol.number.text.converter.service.impl.NumberToWordConverterServiceImpl;
 import com.trendyol.number.text.converter.util.GenericConverter;
 import org.junit.Before;
@@ -11,6 +12,7 @@ import org.mockito.MockitoAnnotations;
 
 import static com.trendyol.number.text.converter.constant.GenericConstants.*;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 
 public class NumberToWordConverterServiceImplTest {
@@ -43,6 +45,18 @@ public class NumberToWordConverterServiceImplTest {
 
         //then
         assertEquals(RESPONSE_ONE_HUNDRED_BILLION_EIGHT_HUNDRED_FIFTY_MILLION_FIVE_HUNDRED_FORTY_THREE_THOUSAND_FOUR_HUNDRED_FIFTY_SEVEN, text);
+    }
+
+    @Test
+    public void itShouldConvertAnySmallToMillionNumberToWord() {
+        //given
+        String responseWord = null;
+
+        //when
+        for (long i = 0; i < NumberToWordEnum.MILLION.getNumber(); i++) {
+            responseWord = numberToTextConverterService.numberToWords(i, CurrencyEnum.DOLLAR);
+        }
+        assertNotNull(responseWord);
     }
 
     @Test
