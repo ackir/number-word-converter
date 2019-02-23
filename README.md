@@ -14,3 +14,5 @@ java -jar target/number-word-converter.jar
 
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Spring Boot](https://spring.io/projects/spring-boot) - Rest Api Framework
+* [Lombok](https://projectlombok.org/) - Code Generation Framework
+* [Swagger](https://swagger.io/) - Rest Api documentaion
