@@ -56,7 +56,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-        <finalName>movie-services-api</finalName>
+        <finalName>number-word-converter</finalName>
     </build>
 
 </project>
