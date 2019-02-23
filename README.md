@@ -1,6 +1,6 @@
 # Number To Word Converter
 
-Thanks to this service, the entered numbers are translated into English words.It also converts the entered string value into English.
+Thanks to this service, the entered numbers are translated into English words. It also converts the entered string to number value.
 
 ## Easy Start
 
